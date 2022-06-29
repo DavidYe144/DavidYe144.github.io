@@ -44,27 +44,66 @@
 						<!-- Post -->
 							<section class="post">
 								<header class="major">
-									<span class="date">April 25, 2017</span>
+									<span class="date">December, 2021</span>
 									<h1>Housing Prices Prediction<br />
 										Model Building</h1>
 									<p>Today, one of the most common uses of data science is to be able to make predictions. And here, we're going to predict house prices from data that we have collected about house prices in a certain area. </p>
 								</header>
-								<div class="image main"><img src="images/pic01.jpg" alt="" /></div>
+								<div class="image main"><img src="images/housing_price_1.jpg" alt="" /></div>
 								<p>Imagine that you're going out househunting, and you see a house you like, how do you know what it's worth? Well, if you have data about that neighborhood, you can do a very good job to predict what that house will be worth. So, after gathering some data for 100 properties with 80 columns such as 'SalePrice', 'Garage', etc, we are ready to build our model. </p>
-								<p>In this project I will build a model that predict house sale price according to its properties, such as the year it is built, its overall quality, whether it has a garage or not, etc. The plan is to first import data, check the data to cleanse and prepare it for us to use. Then I will use correlation to find out the most important categories that relates to the sale price. Then I will fit all the variables into the model. And lastly, I will calculate the prediction and the accuracy score of the model, followed by some plotings.</p>
-							</section>
+								<p>In this project I will build a model that predict house sale price according to its properties, such as the year it is built, its overall quality, whether it has a garage or not, etc. The plan is to first import data, check the data to cleanse and prepare it for us to use. Then I will use correlation to find out the most important categories that relates to the sale price. Some of the important categories are: Sale Price, Overall Quality, Garages, Grand Living Area, Fire places, Year built, etc.
+									Then I will fit all the variables into the model. And lastly, I will calculate the prediction and the accuracy score of the model, followed by some plotings.</p>
+							<p> </p>
 
-					</div>
+							<h2><center>Data Exploration</center></h2>
+							<p>It is always good to have an overview of what you have, especially working with data. Right after I imported the file on python, the first thing I did was simply making a histogram plot of the price of the houses. Sale price is key to our analysis, and we need to find the proper variables that is the most compatible to the price from this data. </p>	
+							<p>As you can see, the prices of the houses are not normally distributed. There are many more houses with pricing between 100,000 to 200,000 than other prices. </p>
+							<center><img src="images/housing_price_2.jpg"></center>
+							<p>Skewness is a measure of the asymmetry of probability distributions. When skew is large, analysis based on normal distributions incorrectly estimates expected returns and risk. In this case, the result of skew function over the house pricings is 1.53, which is pretty large.  We decided to transform housing prices to log and call it "newPrice", and the skew reduced to 0.282, which is very significant. As we can see, the plot is more normally ditributed as well.
+								<center><img src="images/housing_price_3.jpg"></center>
+							Now after our key variable is ready to use, let us simply make some plots to explore the correlation between housing prices with some other features:
+								<center><img src="images/housing_price_4.jpg"><img src="images/housing_price_5.jpg"></center>
+							Above are two plots I predicted that has a linear correlation with housing price. 
+							</p>
+							<p> </p>
+							<p> 
+							After some brainstorming, I still needed to prepare the data to make sure they are usable. So I dropped the columns with nulls, and used the columns with numeric variables for me to build the model. After this step, I found out that 38 columns can be used for our model. Some functions I used were dropna(), select_dtypes(include=[np.number]), etc. <br>
+							<h2><center>Algorithm and Correlation</center></h2>
+							Now I am ready to build my linear regression model. The algorithm I used in this project is linear regression. Linear regression is a basic and commonly used type of predictive analysis, but it is also an incredible tool to analyzing data by estimating the relationship between variables. Three major uses for regression analysis are (1) determining the strength of predictors, (2) forecasting an effect, and (3) trend forecasting. I am using Multiple Linear Regression for this project, which has 1 dependent variable (y) and multiple independent variables(x), with the formula of y = b0+b1 * x1+b2 * x2+b3 * x3...+e, where b is the y-intercept and e as error. Since there are multiple variables in this data, multiple linear regression is the most suitable algorithm, where I used Sale Price as the dependent variable Y and the numeric columns as independent variables X.
+								<center><img src="images/housing_price_6.jpg", style="width:600px;height:200px;"></center>
+							Now we need to find correlation between each variable and housing price. I made a variable called relation and found out the correlation between each variable with Sale Price. It shows that there are 8 columns have negative correlation with Sale Price. As we did some test runs, I found out the highest score comes with the most variables used. So in this model, we used all the columns as variables.<br>
+							<p> </p>
+							<h2><center>Testing and Analysis</center></h2>
+							I started by selecting top 5 columns with greatest correlation with Sale Price, and received 79.34% as the result, which is not significantly high. As I increased the numbers of columns according to the order of correlation, the score gradually increased. 
+								<center><img src="images/housing_price_7.jpg"></center>
+							I am able to instantiate the linear regression model in python using sklearn, and I am also able to use score function to test how accurate the model is. First, I am able to finish the model by fitting X and Y values into the model. Then, I changed the number of columns we used several times to optimize the model. As I mentioned above, I started with the top 5 variables correlate to Sale Price, and the model score was 79.34. As I increased to 8 variables, the model score increased to 80.3%. I then increased to top 10 variables, and the score raise to 83.54%. So the more variables I used, the more accurate the model became. In the end, I am able to output all the columns and get the score up to 93.78%. Although there are 4 columns output negative correlation to Sale Price, the model score still increased as I included these columns in the model. Therefore I finalized my model using all the numeric columns.
+
+							The highest result I was able to get was by using all the available columns as variables to produce 93.78% accuracy.
+								<center><img src="images/housing_price_8.jpg"></center>
+							See below the comparison between the predicted housing price with top 5 variables and 20 variables.
+								<center><img src="images/housing_price_9.jpg"><img src="images/housing_price_10.jpg"></center>
+							Now let us have a better view to compare our predicted housing price and their price. I used the first 50 rows of data to compare the predicted price and the actual price by plotting them out. As you may see, there is a very small difference between two lines. Some of the values actually overlap, meaning the predicted price is extremely close to the actual price. Then I made a plot with the model I made with only 5 variables, and the difference was bigger. 
+							image.png
+								<center><img src="images/housing_price_11.jpg", style="width:400px;height:350px;"><img src="images/housing_price_12.jpg", style="width:400px;height:350px;"></center>
+							<p>
+							
+							<h2><center>Conclusion</center></h2>
+							In conclusion, the model made with all the available numerical variables is far more accurate than the model with only 5 variables. The accuracy score was 93.78% verses 79.34%. This tells us that the more information we use in data analysis the better.
+							<br>
+							<br>
+							On another note, I am ready to buy a house!
+							</p>
+					<hr />
 
 				<!-- Footer -->
 					<footer id="footer">
 							<section>
 								<h3>Social</h3>
 								<ul class="icons alt">
-									<li><a href="#" class="icon brands alt fa-linkedin"><span class="label">Linkedin</span></a></li>
-									<li><a href="#" class="icon brands alt fa-facebook-f"><span class="label">Facebook</span></a></li>
-									<li><a href="#" class="icon brands alt fa-instagram"><span class="label">Instagram</span></a></li>
-									<li><a href="#" class="icon brands alt fa-github"><span class="label">GitHub</span></a></li>
+									<li><a href="https://www.linkedin.com/in/davidye7/" class="icon brands alt fa-linkedin"><span class="label">Linkedin</span></a></li>
+									<li><a href="https://github.com/DavidYe144" class="icon brands alt fa-github"><span class="label">GitHub</span></a></li>
+									<li><a href="https://www.facebook.com/david.ye3/" class="icon brands alt fa-facebook-f"><span class="label">Facebook</span></a></li>
+									<li><a href="https://www.instagram.com/david.zre/" class="icon brands alt fa-instagram"><span class="label">Instagram</span></a></li>
 								</ul>
 							</section>
 					</footer>
