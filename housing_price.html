@@ -25,9 +25,9 @@
 				<!-- Nav -->
 					<nav id="nav">
 						<ul class="links">
-							<li class="active"><a href="index.html">Home</a></li>
+							<li><a href="index.html">Home</a></li>
 							<li><a href="about_me.html">About Me</a></li>
-							<li><a href="generics.html">Projects</a></li>
+							<li class="active"><a href="generics.html">Projects</a></li>
 							<li><a href="elements.html">Contact</a></li>
 						</ul>
 						<ul class="icons">
@@ -61,9 +61,9 @@
 							<p>As you can see, the prices of the houses are not normally distributed. There are many more houses with pricing between 100,000 to 200,000 than other prices. </p>
 							<center><img src="images/housing_price_2.jpg"></center>
 							<p>Skewness is a measure of the asymmetry of probability distributions. When skew is large, analysis based on normal distributions incorrectly estimates expected returns and risk. In this case, the result of skew function over the house pricings is 1.53, which is pretty large.  We decided to transform housing prices to log and call it "newPrice", and the skew reduced to 0.282, which is very significant. As we can see, the plot is more normally ditributed as well.
-								<center><img src="images/housing_price_3.jpg"></center>
+								<center><img src="images/housing_price_3.JPG"></center>
 							Now after our key variable is ready to use, let us simply make some plots to explore the correlation between housing prices with some other features:
-								<center><img src="images/housing_price_4.jpg"><img src="images/housing_price_5.jpg"></center>
+								<center><img src="images/housing_price_4.JPG"><img src="images/housing_price_5.JPG"></center>
 							Above are two plots I predicted that has a linear correlation with housing price. 
 							</p>
 							<p> </p>
@@ -76,16 +76,16 @@
 							<p> </p>
 							<h2><center>Testing and Analysis</center></h2>
 							I started by selecting top 5 columns with greatest correlation with Sale Price, and received 79.34% as the result, which is not significantly high. As I increased the numbers of columns according to the order of correlation, the score gradually increased. 
-								<center><img src="images/housing_price_7.jpg"></center>
+								<center><img src="images/housing_price_7.JPG"></center>
 							I am able to instantiate the linear regression model in python using sklearn, and I am also able to use score function to test how accurate the model is. First, I am able to finish the model by fitting X and Y values into the model. Then, I changed the number of columns we used several times to optimize the model. As I mentioned above, I started with the top 5 variables correlate to Sale Price, and the model score was 79.34. As I increased to 8 variables, the model score increased to 80.3%. I then increased to top 10 variables, and the score raise to 83.54%. So the more variables I used, the more accurate the model became. In the end, I am able to output all the columns and get the score up to 93.78%. Although there are 4 columns output negative correlation to Sale Price, the model score still increased as I included these columns in the model. Therefore I finalized my model using all the numeric columns.
 
 							The highest result I was able to get was by using all the available columns as variables to produce 93.78% accuracy.
-								<center><img src="images/housing_price_8.jpg"></center>
+								<center><img src="images/housing_price_8.JPG"></center>
 							See below the comparison between the predicted housing price with top 5 variables and 20 variables.
-								<center><img src="images/housing_price_9.jpg"><img src="images/housing_price_10.jpg"></center>
+								<center><img src="images/housing_price_9.JPG"><img src="images/housing_price_10.JPG"></center>
 							Now let us have a better view to compare our predicted housing price and their price. I used the first 50 rows of data to compare the predicted price and the actual price by plotting them out. As you may see, there is a very small difference between two lines. Some of the values actually overlap, meaning the predicted price is extremely close to the actual price. Then I made a plot with the model I made with only 5 variables, and the difference was bigger. 
 							image.png
-								<center><img src="images/housing_price_11.jpg", style="width:400px;height:350px;"><img src="images/housing_price_12.jpg", style="width:400px;height:350px;"></center>
+								<center><img src="images/housing_price_11.JPG", style="width:400px;height:350px;"><img src="images/housing_price_12.JPG", style="width:400px;height:350px;"></center>
 							<p>
 							
 							<h2><center>Conclusion</center></h2>
