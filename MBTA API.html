@@ -1,0 +1,160 @@
+<!DOCTYPE HTML>
+<!--
+	Massively by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Massachusetts Bay Transportation Authority API</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Header -->
+					<header id="header">
+						<a href="index.html" class="logo">David Ye</a>
+					</header>
+
+				<!-- Nav -->
+					<nav id="nav">
+						<ul class="links">
+							<li class="active"><a href="index.html">Home</a></li>
+							<li><a href="about_me.html">About Me</a></li>
+							<li><a href="generics.html">Projects</a></li>
+							<li><a href="elements.html">Contact</a></li>
+						</ul>
+						<ul class="icons">
+							<li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
+							<li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
+							<li><a href="#" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
+							<li><a href="#" class="icon brands fa-github"><span class="label">GitHub</span></a></li>
+						</ul>
+					</nav>
+
+				<!-- Main -->
+					<div id="main">
+
+						<!-- Post -->
+							<section class="post">
+								<header class="major">
+									<span class="date">March, 2022</span>
+									<h1>Massachusetts Bay Transportation<br />
+										Authority API</h1>
+								</header>
+									<p>Many people chose to take public transportation instead of driving their personal vehicle after gas price increased since the beginning of 2022.
+										In the US, there are cities with very well-planned transportation system, such as New York, Boston, San Francisco, Chicago, and Washington D.C. Buses are a big tool to get around, especially in downtown. However, it would be very convienent for
+										the passengers to know the estimated arrival time of each bus. Passengers could plan ahead to reduce their wait time but also make it on time! For this, I created a web application for 
+										all the passengers to see the location of the buses in the Boston area. It is called Massachusetts Bay Transportation Authority API, or simpley MBTA API. <br />
+									</p>
+									<center><img src="images/MBTA_1.jpg"></center>
+									<br>
+									<p>The way I made this web application is to make an API that connects to a server that will be connecting to <a href= "https://api-v3.mbta.com/vehicles?filter[route]=1&include=trip">MBTA</a>, which is a website has provided an interface through which I can ask about the location of their buses.
+										I need to write an application programming interface that will be running on a server that I will be creating. I am responsible for interrogating MBTA to requeste that information and present them on API. So, more formally my server will
+										need to query MBTA, store that data, and refresh that data automatically. The tools I used are Python, SQL, MongoDB, Docker container, and Debezium, which is an open source distributed platform for change data capture for data update. 
+									</p>
+									<br>
+
+									<h2><center>Way to approach</center></h2>
+									<p>
+										In order to create this API, first I created a MySQL database in a Docker container to store data returned by the MBTA API. Then I made calls to the MBTA API for Route 1 periodically (every 10 seconds), and parse the JSON results returned and will store the data in a MySQL database for further analysis.
+										After that, I performed change data capture (CDC) on the MySQL database. Through that, my application could monitor the MySQL database for changes and propagate any changes to a MongoDB database.
+										After letting the server run for a period of 12 hours and storing data in the MySQL database. I will use python to load and analyze the data stored in the database.
+									</p>
+									<br>
+									<h2><center>Preparation</center></h2>
+									<p>
+										Since most of the work is based on a docker container, first I had to create a network for all the applications to run. Its function is to establish communication between Docker containers and the outside world (in this case, it is MBTA) via the host machine where the Docker daemon is running.
+										<center><img src="images/MBTA_2.jpg"width="70%" height="70%"> </center>
+										<center><img src="images/MBTA_3.jpg"> </center>
+										Then I created many files via Visual Studio Code:
+										<br>
+										&nbsp; &nbsp; &nbsp; &nbsp;<b>MBTA.sql:</b> Creating the database that stores all the information we need from MBTA. Here are the information: record number, route number,
+										id number, bearing, latitude, longitude, current status, current stop sequence, direction id, label, occupancy status, speed, update time.
+										<br>
+										&nbsp; &nbsp; &nbsp; &nbsp;<b>MBTAApiClient.py:</b> A program that collects data in JSON format from MBTA and stores them in the database.
+										<br>
+										&nbsp; &nbsp; &nbsp; &nbsp;<b>Dockerfile:</b> Using docker to connect docker container, docker network with MBTA.sql
+										<br>
+										&nbsp; &nbsp; &nbsp; &nbsp;<b>mysqldb.py:</b>A python file that connects to SQL
+										<br>
+										&nbsp; &nbsp; &nbsp; &nbsp;<b>index.html:</b>Home page for MBTA API.
+										server.py:Initializing the buses list by doing an API call to the MBTA database.
+										<br>
+										&nbsp; &nbsp; &nbsp; &nbsp;<b>timer.py:</b> Sampling time loops
+										<br>
+										&nbsp; &nbsp; &nbsp; &nbsp;<b>mbta.csv</b>: The extracted data stored in the database after 12 hours.
+										<center><img src="images/MBTA_8.jpg" width="90%" height="90%"> </center>
+										<br>
+										Other than that, we had to create a docker image and a mongo database:
+										<center><img src="images/MBTA_4.jpg"> </center>
+										<p>
+										A Docker image is a file used to execute code in a Docker container. Here we are using 
+										</p>
+										<center><img src="images/MBTA_5.jpg"> </center>
+										<p>
+										A Docker container A Docker container image is a lightweight, standalone, executable package of software that includes everything needed to run an application: code, runtime, system tools, system libraries and settings.
+										</p>
+										<center><img src="images/MBTA_6.jpg"> </center>
+										<p>
+										Docker can be used to run MongoDB instances. Setting up MongoDB as a container allows the user to create a portable and extensible NoSQL database.
+										</p>
+
+										<center><i>You can see all the file from my github page.</i></center>
+									</p>
+									<p>
+										<h2><center>API ready</center></h2>
+									This is what the server looks like! Here is the map of Boston with "T" as a label of the location of different buses!
+									<center><img src="images/MBTA_7.jpg" width="70%" height="70%"> </center>
+									</p>
+									<p>
+									<h2><center>Analysis</center></h2>
+									After creating the API, we are able to run some simple programs on python and analyze the data.
+									<br>
+									<center><img src="images/MBTA_9.jpg" width="100%" height="100%"> </center>
+									<center>Loading Data on Jupyter notebook</center>
+									<br>
+									<center><img src="images/MBTA_10.jpg" width="90%" height="90%"> </center>
+									<center>Calculating the average speed of the buses</center>
+									<br>
+									So one can find out where the buses are!
+									</p>
+					<hr />
+
+				<!-- Footer -->
+					<footer id="footer">
+							<section>
+								<h3>Social</h3>
+								<ul class="icons alt">
+									<li><a href="https://www.linkedin.com/in/davidye7/" class="icon brands alt fa-linkedin"><span class="label">Linkedin</span></a></li>
+									<li><a href="https://github.com/DavidYe144" class="icon brands alt fa-github"><span class="label">GitHub</span></a></li>
+									<li><a href="https://www.facebook.com/david.ye3/" class="icon brands alt fa-facebook-f"><span class="label">Facebook</span></a></li>
+									<li><a href="https://www.instagram.com/david.zre/" class="icon brands alt fa-instagram"><span class="label">Instagram</span></a></li>
+								</ul>
+							</section>
+					</footer>
+
+				<!-- Copyright -->
+					<div id="copyright">
+						<ul><li>&copy; Untitled</li><li>Design: <a href="https://html5up.net">HTML5 UP</a></li></ul>
+					</div>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>

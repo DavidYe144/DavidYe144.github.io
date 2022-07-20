@@ -1,0 +1,170 @@
+[1mdiff --git a/biblereading.html b/biblereading.html[m
+[1mindex 1080f24..b6ac569 100644[m
+[1m--- a/biblereading.html[m
+[1m+++ b/biblereading.html[m
+[36m@@ -6,7 +6,7 @@[m
+ -->[m
+ <html>[m
+ 	<head>[m
+[31m-		<title>Housing Prices Prediction Model Building</title>[m
+[32m+[m		[32m<title>SCCS Daily Bible Reading Page</title>[m
+ 		<meta charset="utf-8" />[m
+ 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />[m
+ 		<link rel="stylesheet" href="assets/css/main.css" />[m
+[36m@@ -25,9 +25,9 @@[m
+ 				<!-- Nav -->[m
+ 					<nav id="nav">[m
+ 						<ul class="links">[m
+[31m-							<li class="active"><a href="index.html">Home</a></li>[m
+[32m+[m							[32m<li><a href="index.html">Home</a></li>[m
+ 							<li><a href="about_me.html">About Me</a></li>[m
+[31m-							<li><a href="generics.html">Projects</a></li>[m
+[32m+[m							[32m<li class="active"><a href="generics.html">Projects</a></li>[m
+ 							<li><a href="elements.html">Contact</a></li>[m
+ 						</ul>[m
+ 						<ul class="icons">[m
+[36m@@ -44,56 +44,47 @@[m
+ 						<!-- Post -->[m
+ 							<section class="post">[m
+ 								<header class="major">[m
+[31m-									<span class="date">December, 2021</span>[m
+[31m-									<h1>Housing Prices Prediction<br />[m
+[31m-										Model Building</h1>[m
+[32m+[m									[32m<span class="date">May, 2022</span>[m
+[32m+[m									[32m<h1>SCCS Daily Bible Reading<br />[m
+[32m+[m										[32mPage</h1>[m
+ 								</header>[m
+[31m-								<p>Today, one of the most common uses of data science is to be able to make predictions. And here, we're going to predict house prices from data that we have collected about house prices in a certain area. </p>[m
+[32m+[m								[32m<p>Bible has been the number one selling book for the past centry. Many people read bible for different things. All kinds of people read bible for their own purpose. Some read it for knowledge; some read it for wisdom; some read it history, and some read it for religion.[m
+[32m+[m[32m                                    But the difficult thing is, the bible is too long! A normal bible that includes the Old Testament, which is before Christ, and the New Testament, which is after Christ, includes 66 books, 1189 chapters, 31102 verses, and 750,000 words! According to Google, it takes 70 hours and 40 minutes to finish the entire bible.[m
+[32m+[m[32m                                    How is it possible to finish this lengthy book? Many Christians were recommended to read three chapters of the Old Testament and one chapter of the New Testament everyday, and they can finish the entire bible in a year. However, it is not easy to track where you have left off, and if you miss a day, you would simply fall off the track.[m
+[32m+[m[32m                                    Personally, I know many people who failed this plan simply because they missed a day and was not able to make it back to schedule! I always thought, wouldn't it be great if there is an app that gives you the verses of the day everyday so you can read it when you are  waiting for your coffee to brew or simply taking a break from work?[m
+[32m+[m[32m                                    My company Southern California Christian Students (SCCS) have produced this app, and we are able to implement a webpage to a tab in the app. I decided to follow my dream by making a page that automatically presents the chapter of the day. So whoever uses the app can go to the bible tab, read the bible and the verses of the day from their phone or tablet.[m[41m [m
+ 								[m
+[31m-								<div class="image main"><img src="images/housing_price_1.jpg" alt="" /></div>[m
+[31m-								<p>Imagine that you're going out househunting, and you see a house you like, how do you know what it's worth? Well, if you have data about that neighborhood, you can do a very good job to predict what that house will be worth. So, after gathering some data for 100 properties with 80 columns such as 'SalePrice', 'Garage', etc, we are ready to build our model. </p>[m
+[31m-								<p>In this project I will build a model that predict house sale price according to its properties, such as the year it is built, its overall quality, whether it has a garage or not, etc. The plan is to first import data, check the data to cleanse and prepare it for us to use. Then I will use correlation to find out the most important categories that relates to the sale price. Some of the important categories are: Sale Price, Overall Quality, Garages, Grand Living Area, Fire places, Year built, etc.[m
+[31m-									Then I will fit all the variables into the model. And lastly, I will calculate the prediction and the accuracy score of the model, followed by some plotings.</p>[m
+[31m-							<p> </p>[m
+[31m-[m
+[31m-							<h2><center>Data Exploration</center></h2>[m
+[31m-							<p>It is always good to have an overview of what you have, especially working with data. Right after I imported the file on python, the first thing I did was simply making a histogram plot of the price of the houses. Sale price is key to our analysis, and we need to find the proper variables that is the most compatible to the price from this data. </p>	[m
+[31m-							<p>As you can see, the prices of the houses are not normally distributed. There are many more houses with pricing between 100,000 to 200,000 than other prices. </p>[m
+[31m-							<center><img src="images/housing_price_2.jpg"></center>[m
+[31m-							<p>Skewness is a measure of the asymmetry of probability distributions. When skew is large, analysis based on normal distributions incorrectly estimates expected returns and risk. In this case, the result of skew function over the house pricings is 1.53, which is pretty large.  We decided to transform housing prices to log and call it "newPrice", and the skew reduced to 0.282, which is very significant. As we can see, the plot is more normally ditributed as well.[m
+[31m-								<center><img src="images/housing_price_3.jpg"></center>[m
+[31m-							Now after our key variable is ready to use, let us simply make some plots to explore the correlation between housing prices with some other features:[m
+[31m-								<center><img src="images/housing_price_4.jpg"><img src="images/housing_price_5.jpg"></center>[m
+[31m-							Above are two plots I predicted that has a linear correlation with housing price. [m
+[31m-							</p>[m
+[31m-							<p> </p>[m
+[31m-							<p> [m
+[31m-							After some brainstorming, I still needed to prepare the data to make sure they are usable. So I dropped the columns with nulls, and used the columns with numeric variables for me to build the model. After this step, I found out that 38 columns can be used for our model. Some functions I used were dropna(), select_dtypes(include=[np.number]), etc. <br>[m
+[31m-							<h2><center>Algorithm and Correlation</center></h2>[m
+[31m-							Now I am ready to build my linear regression model. The algorithm I used in this project is linear regression. Linear regression is a basic and commonly used type of predictive analysis, but it is also an incredible tool to analyzing data by estimating the relationship between variables. Three major uses for regression analysis are (1) determining the strength of predictors, (2) forecasting an effect, and (3) trend forecasting. I am using Multiple Linear Regression for this project, which has 1 dependent variable (y) and multiple independent variables(x), with the formula of y = b0+b1 * x1+b2 * x2+b3 * x3...+e, where b is the y-intercept and e as error. Since there are multiple variables in this data, multiple linear regression is the most suitable algorithm, where I used Sale Price as the dependent variable Y and the numeric columns as independent variables X.[m
+[31m-								<center><img src="images/housing_price_6.jpg", style="width:600px;height:200px;"></center>[m
+[31m-							Now we need to find correlation between each variable and housing price. I made a variable called relation and found out the correlation between each variable with Sale Price. It shows that there are 8 columns have negative correlation with Sale Price. As we did some test runs, I found out the highest score comes with the most variables used. So in this model, we used all the columns as variables.<br>[m
+[31m-							<p> </p>[m
+[31m-							<h2><center>Testing and Analysis</center></h2>[m
+[31m-							I started by selecting top 5 columns with greatest correlation with Sale Price, and received 79.34% as the result, which is not significantly high. As I increased the numbers of columns according to the order of correlation, the score gradually increased. [m
+[31m-								<center><img src="images/housing_price_7.jpg"></center>[m
+[31m-							I am able to instantiate the linear regression model in python using sklearn, and I am also able to use score function to test how accurate the model is. First, I am able to finish the model by fitting X and Y values into the model. Then, I changed the number of columns we used several times to optimize the model. As I mentioned above, I started with the top 5 variables correlate to Sale Price, and the model score was 79.34. As I increased to 8 variables, the model score increased to 80.3%. I then increased to top 10 variables, and the score raise to 83.54%. So the more variables I used, the more accurate the model became. In the end, I am able to output all the columns and get the score up to 93.78%. Although there are 4 columns output negative correlation to Sale Price, the model score still increased as I included these columns in the model. Therefore I finalized my model using all the numeric columns.[m
+[31m-[m
+[31m-							The highest result I was able to get was by using all the available columns as variables to produce 93.78% accuracy.[m
+[31m-								<center><img src="images/housing_price_8.jpg"></center>[m
+[31m-							See below the comparison between the predicted housing price with top 5 variables and 20 variables.[m
+[31m-								<center><img src="images/housing_price_9.jpg"><img src="images/housing_price_10.jpg"></center>[m
+[31m-							Now let us have a better view to compare our predicted housing price and their price. I used the first 50 rows of data to compare the predicted price and the actual price by plotting them out. As you may see, there is a very small difference between two lines. Some of the values actually overlap, meaning the predicted price is extremely close to the actual price. Then I made a plot with the model I made with only 5 variables, and the difference was bigger. [m
+[31m-							image.png[m
+[31m-								<center><img src="images/housing_price_11.jpg", style="width:400px;height:350px;"><img src="images/housing_price_12.jpg", style="width:400px;height:350px;"></center>[m
+[31m-							<p>[m
+[31m-							[m
+[31m-							<h2><center>Conclusion</center></h2>[m
+[31m-							In conclusion, the model made with all the available numerical variables is far more accurate than the model with only 5 variables. The accuracy score was 93.78% verses 79.34%. This tells us that the more information we use in data analysis the better.[m
+[31m-							<br>[m
+[32m+[m								[32m<div class="image main"><img src="images/bible_1.jpg" alt="" /></div>[m
+[32m+[m[41m								[m
+[32m+[m							[32m<h2><center>Brainstorming</center></h2>[m
+[32m+[m							[32m<p>This page needs to include two sections: A tab with the books of the bibles for regular use, and a tab with daily bible reading schedule. The first one is pretty straight forword by simplying making html files, the second one is much more complicated.[m
+[32m+[m[32m                                So I made a folder called "reading_plan" and put all the verses that needs to be shown in each html file in the folder. Each html file is corresponded to each day of the year with the verses of the day. And I used python to automatically show the html according to the day.[m[41m                             [m
+[32m+[m[32m                            </p>[m[41m	[m
+[32m+[m							[32m<p>As you can see, this is how the website looks like in general. You have the general bible on the left, and reading plan if you tap on the button </p>[m
+[32m+[m							[32m<center><img src="images/bible_2.jpg" width="50%" height="50%"><img src="images/bible_3.jpg" width="50%" height="50%"></center>[m
+ 							<br>[m
+[31m-							On another note, I am ready to buy a house![m
+[31m-							</p>[m
+[32m+[m[32m                            <h2><center>Design</center></h2>[m
+[32m+[m[32m                            <p>For the design, since most users will be using this tool on their phone, I splitted the Old Testament and New Testament, and you can scroll each side to access the book you want. This gives a much cleaner look than most of the bible apps out there, where they either have just one column of all the books and leaving New Testament books all the way in the bottom, or all the books cluster togethere in one chunk. Here are some examples:[m
+[32m+[m[32m                                <center><img src="images/bible_5.jpg" width="50%" height="50%"><img src="images/bible_4.jpg" width="50%" height="50%"></center>[m
+[32m+[m[32m                                <center>Here are the view of the table of contents of the bible from <b>U Version Bible</b> and <b>RCV Bible</b> apps. </center>[m
+[32m+[m[32m                                <br>[m
+[32m+[m[32m                                <center><img src="images/bible_6.jpg"</center>[m
+[32m+[m[32m                                <br>[m
+[32m+[m[32m                                <p>[m
+[32m+[m[32m                                I made floating bottons for "Old Testament" and "New Testament" on the top. When you scroll the Old Testament, the only thing that moves is the books on the left side.[m
+[32m+[m[32m                                </p>[m
+[32m+[m[32m                                <br>[m
+[32m+[m[32m                                <center><img src="images/bible_7.jpg" width="50%" height="50%"><img src="images/bible_8.jpg" width="50%" height="50%"></center>[m
+[32m+[m[32m                                <p>[m
+[32m+[m[32m                                Here is the view of the daily reading. It brings you directly into the chapter of the day. When you click the bottom on the top, which here, is "Exodus", it brings you back to the main page.[m
+[32m+[m[32m                                And when you click the chapter, which here, is "Exodus 10", it brings you to this chapter of the entire bible where you can check out the chapters before and after.[m
+[32m+[m[32m                                </p>[m
+[32m+[m[32m                            </p>[m
+[32m+[m[32m                            <center><img src="images/bible_9.jpg" width="50%" height="50%"</center>[m
+[32m+[m[32m                            <p>[m
+[32m+[m[32m                                Here is the view of it on the app, which is the platform where over 3000 college-age Christians use on a daily basis. I believe this tool can be a huge help to encourage them to read the bible and cause them to grow in their spiritual pursuit.[m
+[32m+[m[32m                            </p>[m
+[32m+[m
+ 					<hr />[m
+ [m
+ 				<!-- Footer -->[m
+[1mdiff --git a/housing_price.html b/housing_price.html[m
+[1mindex b3f0564..1080f24 100644[m
+[1m--- a/housing_price.html[m
+[1m+++ b/housing_price.html[m
+[36m@@ -47,8 +47,9 @@[m
+ 									<span class="date">December, 2021</span>[m
+ 									<h1>Housing Prices Prediction<br />[m
+ 										Model Building</h1>[m
+[31m-									<p>Today, one of the most common uses of data science is to be able to make predictions. And here, we're going to predict house prices from data that we have collected about house prices in a certain area. </p>[m
+ 								</header>[m
+[32m+[m								[32m<p>Today, one of the most common uses of data science is to be able to make predictions. And here, we're going to predict house prices from data that we have collected about house prices in a certain area. </p>[m
+[32m+[m[41m								[m
+ 								<div class="image main"><img src="images/housing_price_1.jpg" alt="" /></div>[m
+ 								<p>Imagine that you're going out househunting, and you see a house you like, how do you know what it's worth? Well, if you have data about that neighborhood, you can do a very good job to predict what that house will be worth. So, after gathering some data for 100 properties with 80 columns such as 'SalePrice', 'Garage', etc, we are ready to build our model. </p>[m
+ 								<p>In this project I will build a model that predict house sale price according to its properties, such as the year it is built, its overall quality, whether it has a garage or not, etc. The plan is to first import data, check the data to cleanse and prepare it for us to use. Then I will use correlation to find out the most important categories that relates to the sale price. Some of the important categories are: Sale Price, Overall Quality, Garages, Grand Living Area, Fire places, Year built, etc.[m
+[1mdiff --git a/index.html b/index.html[m
+[1mindex f679cc7..2388d5c 100644[m
+[1m--- a/index.html[m
+[1m+++ b/index.html[m
+[36m@@ -86,6 +86,30 @@[m
+ 										<li><a href="housing_price.html" class="button">Check it out</a></li>[m
+ 									</ul>[m
+ 								</article>[m
+[32m+[m								[32m<article>[m
+[32m+[m									[32m<header>[m
+[32m+[m										[32m<span class="date">API Building</span>[m
+[32m+[m										[32m<h2><a href="MBTA API.html">Massachusetts Bay Transportation<br />[m
+[32m+[m											[32mAuthority API</a></h2>[m
+[32m+[m									[32m</header>[m
+[32m+[m									[32m<a href="MBTA API.html" class="image fit"><img src="images/MBTA_1.jpg" alt="" /></a>[m
+[32m+[m									[32m<p>Building an API that tracks live buses location and provide an interface for users to predict bus arrival time. </p>[m
+[32m+[m									[32m<ul class="actions special">[m
+[32m+[m										[32m<li><a href="MBTA API.html" class="button">Check it out</a></li>[m
+[32m+[m									[32m</ul>[m
+[32m+[m								[32m</article>[m
+[32m+[m								[32m<article>[m
+[32m+[m									[32m<header>[m
+[32m+[m										[32m<span class="date">API Building</span>[m
+[32m+[m										[32m<h2><a href="MBTA_1">Massachusetts Bay Transportation<br />[m
+[32m+[m											[32mAuthority API</a></h2>[m
+[32m+[m									[32m</header>[m
+[32m+[m									[32m<a href="biblereading.html" class="image fit"><img src="images/bible_1.jpg" alt="" /></a>[m
+[32m+[m									[32m<p>Building a platform that automates daily bible reading portion</p>[m
+[32m+[m									[32m<ul class="actions special">[m
+[32m+[m										[32m<li><a href="biblereading.html" class="button">Check it out</a></li>[m
+[32m+[m									[32m</ul>[m
+[32m+[m								[32m</article>[m
+ 							</section>[m
+ [m
+ 						<!-- Footer -->[m
