@@ -1,0 +1,118 @@
+<!DOCTYPE HTML>
+<!--
+	Massively by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>ETL Processes using Nifi</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Header -->
+					<header id="header">
+						<a href="index.html" class="logo">David Ye</a>
+					</header>
+
+				<!-- Nav -->
+					<nav id="nav">
+						<ul class="links">
+							<li><a href="index.html">Home</a></li>
+							<li><a href="about_me.html">About Me</a></li>
+							<li class="active"><a href="projects.html">Projects</a></li>
+							<li><a href="resume.html">Resume</a></li>
+						</ul>
+					</nav>
+
+				<!-- Main -->
+					<div id="main">
+
+						<!-- Post -->
+							<section class="post">
+								<header class="major">
+									<span class="date">April, 2022</span>
+									<h1>ETL Processes using Nifi
+										</h1>
+								</header>
+								<p>Data engineers move and process data. While it sounds simple, actually it is one of the most complex, and
+									demanding functions when it comes to the amount of things that need to be done. If you think about the cycle at a high level,
+									you're looking at collection, storage, processing, and consumption of that. ETL(extract, transform, and load) is a big part of how we can make your data useful. 
+									<br>
+									Take a look of this hierarchy of data needs introduced by Monica Girardi:
+									<center><img src="images/nifi_2.JPG" width="100%" height="100%"></center>
+									We can see that we go through data collection, through storage, transformations, labeling, optimization, all the way into machine learning and AI. Take another look of where specifically ETL lays between:
+									<center><img src="images/nifi_1.JPG" width="100%" height="100%"></center>
+									In a brief word, the goal ofan ETL process is to migrate and transform data from the source OLTP systems to feed a data warehouse and form data marts.
+								
+								<div class="image main"><img src="images/bible_1.jpg" alt="" /></div>
+								
+							<h2><center>Brainstorming</center></h2>
+							<p>This page needs to include two sections: A tab with the books of the bibles for regular use, and a tab with daily bible reading schedule. The first one is pretty straight forword by simplying making html files, the second one is much more complicated.
+                                So I made a folder called "reading_plan" and put all the verses that needs to be shown in each html file in the folder. Each html file is corresponded to each day of the year with the verses of the day. And I used python to automatically show the html according to the day.                             
+                            </p>	
+							<p></p>
+							<center><img src="images/nifi_2.JPG" width="100%" height="100%"></center>
+							<br>
+                            <h2><center>Design</center></h2>
+                            <p>For the design, since most users will be using this tool on their phone, I splitted the Old Testament and New Testament, and you can scroll each side to access the book you want. This gives a much cleaner look than most of the bible apps out there, where they either have just one column of all the books and leaving New Testament books all the way in the bottom, or all the books cluster togethere in one chunk. Here are some examples:
+                                <center><img src="images/bible_5.jpg" width="50%" height="50%"><img src="images/bible_4.jpg" width="50%" height="50%"></center>
+                                <center>Here are the view of the table of contents of the bible from <b>U Version Bible</b> and <b>RCV Bible</b> apps. </center>
+                                <br>
+                                <center><img src="images/bible_6.JPG"</center>
+                                <br>
+                                <p>
+                                I made floating bottons for "Old Testament" and "New Testament" on the top. When you scroll the Old Testament, the only thing that moves is the books on the left side.
+                                </p>
+                                <br>
+                                <center><img src="./images/bible_7.JPG" width="50%" height="50%"><img src="./images/bible_8.JPG" width="50%" height="50%"></center>
+                                <p>
+                                Here is the view of the daily reading. It brings you directly into the chapter of the day. When you click the bottom on the top, which here, is "Exodus", it brings you back to the main page.
+                                And when you click the chapter, which here, is "Exodus 10", it brings you to this chapter of the entire bible where you can check out the chapters before and after.
+                                </p>
+                            </p>
+                            <center><img src="./images/bible_9.JPG" width="50%" height="50%"</center>
+                            <p>
+                                Here is the view of it on the app, which is the platform where over 3000 college-age Christians use on a daily basis. I believe this tool can be a huge help to encourage them to read the bible and cause them to grow in their spiritual pursuit.
+                            </p>
+
+					<hr />
+
+				<!-- Footer -->
+					<footer id="footer">
+							<section>
+								<h3>Social</h3>
+								<ul class="icons alt">
+									<li><a href="https://www.linkedin.com/in/davidye7/" class="icon brands alt fa-linkedin"><span class="label">Linkedin</span></a></li>
+									<li><a href="https://github.com/DavidYe144" class="icon brands alt fa-github"><span class="label">GitHub</span></a></li>
+									<li><a href="https://www.facebook.com/david.ye3/" class="icon brands alt fa-facebook-f"><span class="label">Facebook</span></a></li>
+									<li><a href="https://www.instagram.com/david.zre/" class="icon brands alt fa-instagram"><span class="label">Instagram</span></a></li>
+								</ul>
+							</section>
+					</footer>
+
+				<!-- Copyright -->
+					<div id="copyright">
+						<ul><li>&copy; Untitled</li><li>Design: <a href="https://html5up.net">HTML5 UP</a></li></ul>
+					</div>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>
