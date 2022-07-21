@@ -27,14 +27,8 @@
 						<ul class="links">
 							<li><a href="index.html">Home</a></li>
 							<li><a href="about_me.html">About Me</a></li>
-							<li class="active"><a href="generics.html">Projects</a></li>
-							<li><a href="elements.html">Contact</a></li>
-						</ul>
-						<ul class="icons">
-							<li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
-							<li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
-							<li><a href="#" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
-							<li><a href="#" class="icon brands fa-github"><span class="label">GitHub</span></a></li>
+							<li class="active"><a href="projects.html">Projects</a></li>
+							<li><a href="resume.html">Resume</a></li>
 						</ul>
 					</nav>
 
@@ -55,13 +49,18 @@
 									</p>
 									<center><img src="images/MBTA_1.jpg"></center>
 									<br>
+									
+									<h2><center>Way to approach</center></h2>
 									<p>The way I made this web application is to make an API that connects to a server that will be connecting to <a href= "https://api-v3.mbta.com/vehicles?filter[route]=1&include=trip">MBTA</a>, which is a website has provided an interface through which I can ask about the location of their buses.
 										I need to write an application programming interface that will be running on a server that I will be creating. I am responsible for interrogating MBTA to requeste that information and present them on API. So, more formally my server will
 										need to query MBTA, store that data, and refresh that data automatically. The tools I used are Python, SQL, MongoDB, Docker container, and Debezium, which is an open source distributed platform for change data capture for data update. 
 									</p>
-									<br>
-
-									<h2><center>Way to approach</center></h2>
+									<p>
+										I first had to navigate to api-v3.mbta.com and register as a developer and get a key to access the information of their vehicles. I can go directly 
+										to that address and pull back the information for that route. I then had to write a very simple client that pull back the data and parse it in JSON format to write that to the 
+										console
+									</p>
+										<center><img src="images/MBTA_11.jpg" width = "100%" height = "100%"> </center>
 									<p>
 										In order to create this API, first I created a MySQL database in a Docker container to store data returned by the MBTA API. Then I made calls to the MBTA API for Route 1 periodically (every 10 seconds), and parse the JSON results returned and will store the data in a MySQL database for further analysis.
 										After that, I performed change data capture (CDC) on the MySQL database. Through that, my application could monitor the MySQL database for changes and propagate any changes to a MongoDB database.
