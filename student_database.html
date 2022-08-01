@@ -1,0 +1,119 @@
+<!DOCTYPE HTML>
+<!--
+	Massively by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Student Grade Database</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Header -->
+					<header id="header">
+						<a href="index.html" class="logo">David Ye</a>
+					</header>
+
+				<!-- Nav -->
+					<nav id="nav">
+						<ul class="links">
+							<li><a href="index.html">Home</a></li>
+							<li><a href="about_me.html">About Me</a></li>
+							<li class="active"><a href="projects.html">Projects</a></li>
+							<li><a href="resume.html">Resume</a></li>
+						</ul>
+					</nav>
+
+				<!-- Main -->
+					<div id="main">
+
+						<!-- Post -->
+							<section class="post">
+								<header class="major">
+									<span class="date">February, 2022</span>
+									<h1>Student Grade Database 
+										</h1>
+                                    <h4>Data Structuring with Python</h4>
+								</header>
+								<p>In this project, I will practice my Python writing skills and also my data structuring skills. I will create a sample
+                                    for Student grade database with Python. 
+								
+                                    <center><img src="images/grade_1.JPG"width="100%" height="100%"></center>
+								<br>
+							<h2><center>Relational Database Structures</center></h2>
+							<p>I took two approaches to create two different databases. Both databases are relational databases. "A relational database is a type of database that stores and provides access to data points that are related to one another. Relational databases are based on the relational model, an intuitive, straightforward way of representing data in tables."(Oracle, )
+                                The relational database is a model that includes basic data structures: the data tables, views, and indexes. The administrators can manage data storage without affecting access to that data as a logical structure.
+                            </p>	
+
+							<center><img src="images/grade_2.JPG"></center>
+                            <p> 
+                                As indicated above, there are two tables listed that we need to input. One includes the student names(Name), problem set ID (Pset), and the grade they score on this problem (Grade). Another table includes problem set ID(PsetID), and the maximum score one can score on this problem(MaxScore.)
+                                Some potential questions we can ask with this data we have are:
+                                <br>
+                                <p>
+                                <i>What is Fred's total for all the Psets?                                 </i><br>
+                                <i>What is Fred's average percentage for all the Psets?</i><br>
+                                <i>What is the average score for Pset 1?</i><br>
+                                <i>What is the average weighted percentage score for all the Psets?</i><br>
+                                </p>
+                                <center><img src="images/grade_3.JPG"></center>
+                                <p>
+                                    Another approach is to create more tables. Here I created three tables: Student ID, Problem set ID, and Grades. With both methods we need to require
+                                    We can match them and created a database accordingly. We can use primary key and foreign key to connect them. A primary key is used to ensure data in the specific column is unique, and a foreign key is a column or group of columns in a relational database table that provides a link between data in two tables.
+                                    According to the first approach with only two tables, we can set the StudentID as the primary key and the PsetID as the foreign key in table 1, and PsetID as the primary key in table 2. By using the PsetID key, we can link two tables together. 
+                                    According to the second approach with three tables, we can set StudentID as the primary key for table 1, PsetID as the primary key for table 2, and Grade as the primary key for table 3 with StudentID and PsetID both as foreign keys. This is how we connect three tables together.
+
+                                    We implemented these two approaches on python using list, dictionaries, and functions. We mainly used add functions to input data; get functions to return data with functions.
+                                    <center><img src="images/grade_4.JPG" width="50%" height="50%"><img src="images/grade_5.JPG"width="50%" height="50%"></center>
+                                    <center><i>Using functions to return students' final Grades</i></center>
+                                    <center><img src="images/grade_6.jpg" width = "50%" height="50%"></center>
+                                    <center><i>Returning final grades from the first three students inputed.</i></center>
+                                    <br>
+                                    As we can see, we made some functions to identify the students' final grades on Python according to the first three students and their grades we inputed. If we want to find out all the students' grades, we simply need to input all the grades and run the function. 
+                                </p>
+                            </p>
+							<br>
+                            You may find all the code I wrote <u><a href="https://github.com/DavidYe144/Student_Grade_Database">here</a></u>, which includes everything I wrote from inputting the grades to the exporting the grades as a csv file to store in a drive. 
+                            <br>
+                            Reference: <a href="https://www.oracle.com/database/what-is-a-relational-database/#:~:text=The%20relational%20model%20means%20that,data%20as%20a%20logical%20structure">“What Is a Relational Database?” Oracle, https://www.oracle.com/database/what-is-a-relational-database/#:~:text=The%20relational%20model%20means%20that,data%20as%20a%20logical%20structure.</a>
+					<hr />
+
+				<!-- Footer -->
+					<footer id="footer">
+							<section>
+								<h3>Social</h3>
+								<ul class="icons alt">
+									<li><a href="https://www.linkedin.com/in/davidye7/" class="icon brands alt fa-linkedin"><span class="label">Linkedin</span></a></li>
+									<li><a href="https://github.com/DavidYe144" class="icon brands alt fa-github"><span class="label">GitHub</span></a></li>
+									<li><a href="https://www.facebook.com/david.ye3/" class="icon brands alt fa-facebook-f"><span class="label">Facebook</span></a></li>
+									<li><a href="https://www.instagram.com/david.zre/" class="icon brands alt fa-instagram"><span class="label">Instagram</span></a></li>
+								</ul>
+							</section>
+					</footer>
+
+				<!-- Copyright -->
+					<div id="copyright">
+						<ul><li>&copy; Untitled</li><li>Design: <a href="https://html5up.net">HTML5 UP</a></li></ul>
+					</div>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>
