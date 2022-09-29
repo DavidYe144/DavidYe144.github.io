@@ -1,0 +1,101 @@
+<!DOCTYPE HTML>
+<!--
+	Massively by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Housing Prices Prediction Model Building</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Header -->
+					<header id="header">
+						<a href="index.html" class="logo">David Ye</a>
+					</header>
+
+				<!-- Nav -->
+					<nav id="nav">
+						<ul class="links">
+							<li><a href="index.html">Home</a></li>
+							<li><a href="about_me.html">About Me</a></li>
+							<li class="active"><a href="projects.html">Projects</a></li>
+							<li><a href="resume.html">Resume</a></li>
+						</ul>
+					</nav>
+
+				<!-- Main -->
+					<div id="main">
+
+						<!-- Post -->
+							<section class="post">
+								<header class="major">
+									<span class="date">January, 2022</span>
+									<h1>Big Data Processing with Apache Airflow</h1>
+								</header>
+								<p>
+									As more companies practices data collecting technology in the last decades, big data is widely used in many industries. Apache Software Foundation has developed something called "Airflow". What is a 'workflow' in this case? It's pretty much what it sounds like. Airflow is an open-source workflow management platform
+									that has a sequence of tasks that might launch on a schedule or perhaps on an event. It is also something that is used to build data
+									pipelines. It is really a pretty general problem that applies to many things.
+								</p>
+								
+								<div class="image main"><img src="images/airflow_1.jpg" alt="" /></div>
+								<p>
+									In this project I will use airflow to create a data pipeline for big data. 
+								</p>
+								<p>First, we need to download airflow yaml file from Apache through terminal window and use the curl command ("curl 'https://airflow.apache.org/docs/apache-airflow/2.1.1/docker-compose.yaml' -o docker-compose.yaml"). This allows us to run airflow in docker container.</p>
+								<center><img src="images/airflow_2.JPG"></center>
+							<p>This enables us to run airflow on our local browser</p>
+							<div class="image main"><img src="images/airflow_3.jpg"></div>
+							
+							<p>As the picture above shows that there is nothing under DAGs (Directed Acyclic Graph), we need to create some python files under this local folder. As the yaml file composes, airflow generates 3 folders: DAGs, logs, and plugins. Here we will make a python file under dags and include 'python_square_operator', which automates in a time interval and squares a number.
+								 </p>
+								 <div class="image main"><img src="images/airflow_4.jpg"></div>
+							<p>As the result, we can see python_square_operator from Airflow.</p>
+							<div class="image main"><img src="images/airflow_5.jpg"></div>
+							
+							<p>Start the DAG by toggling the switch to the left of its name. Select the DAG and open up the Graph View. According to the Logs, we can see that airflow successfully returned the square of 13, which is 169. This is correct as we see the number we put in the python file under DAGs is 13 with the function of doubling the number. Airflow also marked the task as success </p>
+							<div class="image main"><img src="images/airflow_6.JPG"></div>
+
+							
+					<hr />
+
+				<!-- Footer -->
+					<footer id="footer">
+							<section>
+								<h3>Social</h3>
+								<ul class="icons alt">
+									<li><a href="https://www.linkedin.com/in/davidye7/" class="icon brands alt fa-linkedin"><span class="label">Linkedin</span></a></li>
+									<li><a href="https://github.com/DavidYe144" class="icon brands alt fa-github"><span class="label">GitHub</span></a></li>
+									<li><a href="https://www.facebook.com/david.ye3/" class="icon brands alt fa-facebook-f"><span class="label">Facebook</span></a></li>
+									<li><a href="https://www.instagram.com/david.zre/" class="icon brands alt fa-instagram"><span class="label">Instagram</span></a></li>
+								</ul>
+							</section>
+					</footer>
+
+				<!-- Copyright -->
+					<div id="copyright">
+						<ul><li>&copy; Untitled</li><li>Design: <a href="https://html5up.net">HTML5 UP</a></li></ul>
+					</div>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>
